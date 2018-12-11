@@ -23,12 +23,12 @@ export class Beers extends React.Component{
         const isLoading = this.state.isLoading;
         const beers = this.state.beers;
         if (isLoading){
-            return <div>Loading....</div>
+            return <h1 align="center">Loading....</h1>
         }
         else
             return <div className="container ">
                 <div className="main">
-                    <div><h2 align="center">All beers</h2></div>
+                    <div><h2 align="center">Beers</h2></div>
                     { beers.map((beer, key) => <div key={beer.id} className="card">
                     <div className="card-body">
                         <h5 className="card-title"><a href={"/beer/"+beer.id}>{beer.name}</a></h5>
