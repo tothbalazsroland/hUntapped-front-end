@@ -12,7 +12,7 @@ export class Breweries extends React.Component{
     componentDidMount(){
         this.setState( {isLoading: true});
 
-        fetch("http://192.168.162.37:8080/api/breweries")
+        fetch("http://localhost:8080/api/breweries")
             .then(response => response.json())
             .then(data => this.setState( {breweries: data, isLoading:false}))
     }

@@ -1,4 +1,5 @@
 import React from "react";
+import {Navbar} from "./Navbar";
 
 export class Beer extends React.Component{
     constructor(props) {
@@ -12,7 +13,7 @@ export class Beer extends React.Component{
 
     componentDidMount(){
         this.setState( {isLoading: true});
-        const url = "http://192.168.162.37:8080/api/beer/"+this.state.beerId;
+        const url = "http://localhost:8080/api/beer/"+this.state.beerId;
         fetch(url)
             .then(response => response.json())
             .then(data => this.setState( {beer: data, isLoading:false}))

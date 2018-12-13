@@ -14,7 +14,7 @@ export class Beers extends React.Component{
     componentDidMount(){
         this.setState( {isLoading: true});
 
-        fetch("http://192.168.162.37:8080/api/beers")
+        fetch("http://localhost:8080/api/beers")
             .then(response => response.json())
             .then(data => this.setState( {beers: data, isLoading:false}))
     }

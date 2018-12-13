@@ -15,7 +15,7 @@ export class Venues extends React.Component{
     componentDidMount(){
         this.setState( {isLoading: true});
 
-        fetch("http://192.168.162.37:8080/api/venues")
+        fetch("http://localhost:8080/api/venues")
             .then(response => response.json())
             .then(data => this.setState( {venues: data, isLoading:false}))
     }
