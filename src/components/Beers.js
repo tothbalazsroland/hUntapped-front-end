@@ -26,8 +26,7 @@ export class Beers extends React.Component{
             return <h1 align="center">Loading....</h1>
         }
         else
-            return <div className="container ">
-                <div className="main">
+            return <div className="main">
                     <div><h2 align="center">Beers</h2></div>
                     { beers.map((beer, key) => <div key={beer.id} className="card">
                     <div className="card-body">
@@ -48,7 +47,6 @@ export class Beers extends React.Component{
                     </div>
                 </div>)}
                 </div>
-            </div>
     }
 
 }

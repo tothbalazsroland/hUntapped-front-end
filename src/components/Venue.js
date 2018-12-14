@@ -29,7 +29,7 @@ export class Venue extends React.Component{
             return (
                     <div className="card">
                         <div className="card-body">
-                            <h5 className="card-title"><a href={"/venue/"+venue.id}>{venue.name}</a><a href={venue.facebookLink}> <img className="facebookImg" src={fb}/></a></h5>
+                            <h5 className="card-title"><a href={"/venue/"+venue.id}>{venue.name}</a><a href={venue.facebookLink}> <img alt="" className="facebookImg" src={fb}/></a></h5>
                             <p className="type">{venue.type}</p>
                             <p className="brewery-name"> {venue.country}, {venue.address}</p>
                             <p className="card-text">{venue.phoneNumber}</p>

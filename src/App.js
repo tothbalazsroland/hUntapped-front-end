@@ -9,8 +9,9 @@ import {Breweries} from "./components/Breweries";
 import {Beer} from "./components/Beer";
 import {Brewery} from "./components/Brewery";
 import {Venue} from "./components/Venue";
+import {Search} from "./components/Search"
 
-import logo from './logo.svg';
+/*import logo from './logo.svg';*/
 import './App.css';
 
 class App extends Component {
@@ -26,6 +27,7 @@ class App extends Component {
                 <Route path="/beer/:id" component={Beer}/>
                 <Route path="/brewery/:id" component={ Brewery}/>
                 <Route path="/venue/:id" component={Venue}/>
+                <Route path="/search" component={Search}/>
             </div>
         </Router>
     );
