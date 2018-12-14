@@ -13,12 +13,14 @@ import {Register} from "./components/Register";
 
 import logo from './logo.svg';
 import './App.css';
+import {LogIn} from "./components/LogIn";
 
 class App extends Component {
   render() {
     return (
         <Router>
             <div>
+                <Route path="/login" component={LogIn}/>
                 <Route path="/user/:userId" component={User}/>
                 <Route exact path="/" component={Home}/>
                 <Route path="/beers" component={Beers}/>
