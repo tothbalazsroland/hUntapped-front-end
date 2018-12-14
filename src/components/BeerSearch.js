@@ -32,6 +32,8 @@ export class BeerSearch extends React.Component {
     }
 
     // IMPORTANT!! at this function use the nextProps, thats the new one!
+    // Because, look! The props just changed! Let's re-render on more time
+    // with the old one, for fun sake!
     componentWillReceiveProps(nextProps) {
         this.setState({beers: null});
         this.sendSearch(nextProps.nameChunk);
