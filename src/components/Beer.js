@@ -26,27 +26,29 @@ export class Beer extends React.Component{
             return <h1 align="center">Loading....</h1>
         }
         else
-        return (
-            <div className="card">
-            <div className="card-body">
-                <h5 className="card-title"><a href={"/beer/"+beer.id}>{beer.name}</a></h5>
-                <p className="brewery-name"> {beer.brewery}</p>
-                <p className="beer-style"> {beer.type}</p>
-                <p className="card-text">{beer.description}</p>
-                <table className="table table-bordered">
-                    <tbody>
-                    <tr>
-                        <td className="ABV"> {beer.abv} % ABV</td>
-                        <td className="IBU">{beer.ibu} IBU</td>
-                        <td className="rating"> Rating: {beer.rating} </td>
-                        <td className="numberofratings">{beer.numberOfRatings} Ratings</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-                <h1 align="center"> Check-ins:</h1>
-                <p align="center"> No Check-ins yet!</p>
-            </div>
+        return (<div>
+                <Navbar/>
+                <div className="card">
+                    <div className="card-body">
+                        <h5 className="card-title"><a href={"/beer/"+beer.id}>{beer.name}</a></h5>
+                        <p className="brewery-name"> {beer.brewery}</p>
+                        <p className="beer-style"> {beer.type}</p>
+                        <p className="card-text">{beer.description}</p>
+                        <table className="table table-bordered">
+                            <tbody>
+                            <tr>
+                                <td className="ABV"> {beer.abv} % ABV</td>
+                                <td className="IBU">{beer.ibu} IBU</td>
+                                <td className="rating"> Rating: {beer.rating} </td>
+                                <td className="numberofratings">{beer.numberOfRatings} Ratings</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h1 align="center"> Check-ins:</h1>
+                    <p align="center"> No Check-ins yet!</p>
+                </div></div>
+
         );
     }
 

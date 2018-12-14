@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 
 
-class Navbar extends React.Component{
+export class Navbar extends React.Component{
 
     constructor(props) {
         super(props);

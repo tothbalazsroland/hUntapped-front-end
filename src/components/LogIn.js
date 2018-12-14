@@ -1,6 +1,7 @@
 import React from 'react';
 import * as jwt_decoder from "jwt-decode";
 import { Redirect } from 'react-router-dom'
+import {Navbar} from "./Navbar";
 
 export class LogIn extends React.Component{
     constructor(props) {
@@ -58,35 +59,39 @@ export class LogIn extends React.Component{
 
     render(){
         if (this.state.redirect == true) {
-            return <Redirect to="/"/>
+            return <Redirect to="/beers"/>
         }else
-        return <div className="card">
-            <div className="card-body">
-                <div className="row justify-content-md-center">
-                    <div className="col-30%">
-                        <label>Username: </label><br/>
+        return <div>
+            <Navbar/>
+            <div className="card">
+                <div className="card-body">
+                    <div className="row justify-content-md-center">
+                        <div className="col-30%">
+                            <label>Username: </label><br/>
+                        </div>
                     </div>
-                </div>
-                <div className="row justify-content-md-center">
-                    <div className="col-30%">
-                        <input type="text" name="username" placeholder="Username" onChange={this.handleChange}/>
+                    <div className="row justify-content-md-center">
+                        <div className="col-30%">
+                            <input type="text" name="username" placeholder="Username" onChange={this.handleChange}/>
+                        </div>
                     </div>
-                </div>
 
-                <div className="row justify-content-md-center">
-                    <div className="col-30%">
-                        <label>Password: </label><br/>
+                    <div className="row justify-content-md-center">
+                        <div className="col-30%">
+                            <label>Password: </label><br/>
+                        </div>
                     </div>
-                </div>
-                <div className="row justify-content-md-center">
-                    <div className="col-30%">
-                        <input type="password" name="password" placeholder="Password" onChange={this.handleChange}/>
+                    <div className="row justify-content-md-center">
+                        <div className="col-30%">
+                            <input type="password" name="password" placeholder="Password" onChange={this.handleChange}/>
+                        </div>
                     </div>
-                </div>
-                <div className="row justify-content-md-center">
-                    <button type="button" className="btn btn-dark" onClick={()=> {this.logIn()}}>Log in</button>
+                    <div className="row justify-content-md-center">
+                        <button type="button" className="btn btn-dark" onClick={()=> {this.logIn()}}>Log in</button>
+                    </div>
                 </div>
             </div>
-        </div>
+            </div>
+
     }
 }

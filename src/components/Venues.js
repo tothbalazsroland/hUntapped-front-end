@@ -1,5 +1,6 @@
 import React from "react";
 import fb from "./img/fb.png";
+import {Navbar} from "./Navbar";
 
 export class Venues extends React.Component{
     constructor(props) {
@@ -27,7 +28,9 @@ export class Venues extends React.Component{
             return <h1 align="center">Loading....</h1>
         }
         else
-            return <div className="container ">
+            return<div>
+            <Navbar/>
+            <div className="container ">
                 <div className="main">
                     <div><h2 align="center">Venues</h2></div>
                     { venues.map((venue, key) => <div key={venue.id} className="card">
@@ -40,5 +43,7 @@ export class Venues extends React.Component{
                     </div>)}
                 </div>
             </div>
+        </div>
+
     }
 }
