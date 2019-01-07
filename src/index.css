@@ -58,3 +58,8 @@ img {
     height: 30px;
     float: right;
 }
+
+#logOut:hover{
+    cursor: pointer;
+}
+

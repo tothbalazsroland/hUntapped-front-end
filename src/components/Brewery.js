@@ -1,4 +1,6 @@
 import React from "react";
+import {Navbar} from "./Navbar";
+import {getUrl} from "./ApiUrl";
 
 export class Brewery extends React.Component{
     constructor(props) {
@@ -12,7 +14,7 @@ export class Brewery extends React.Component{
 
     componentDidMount(){
         this.setState( {isLoading: true});
-        const url = "http://192.168.162.37:8080/api/brewery/"+this.state.breweryId;
+        const url = getUrl()+"api/brewery/id="+this.state.breweryId;
         fetch(url)
             .then(response => response.json())
             .then(data => this.setState( {brewery: data, isLoading:false}))
@@ -25,24 +27,26 @@ export class Brewery extends React.Component{
             return <h1 align="center">Loading....</h1>
         }
         else
-            return (
-                <div className="card">
-                <div className="card-body">
-                    <h5 className="card-title"><a href={"/brewery/"+brewery.id}>{brewery.name}</a></h5>
-                    <p className="brewery-name"> {brewery.country}</p>
-                    <table className="table table-bordered">
-                        <tbody>
-                        <tr>
-                            <td className="rating"> Rating: {brewery.rating} </td>
-                            <td className="numberofratings">{brewery.numberOfRatings} Ratings</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <p className="description">{brewery.description}</p>
-                </div>
-                    <h1 align="center"> Check-ins:</h1>
-                    <p align="center"> No Check-ins yet!</p>
-                </div>
+            return (<div>
+                    <Navbar/>
+                    <div className="card">
+                        <div className="card-body">
+                            <h5 className="card-title"><a href={"/brewery/"+brewery.id}>{brewery.name}</a></h5>
+                            <p className="brewery-name"> {brewery.country}</p>
+                            <table className="table table-bordered">
+                                <tbody>
+                                <tr>
+                                    <td className="rating"> Rating: {brewery.rating} </td>
+                                    <td className="numberofratings">{brewery.numberOfRatings} Ratings</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <p className="description">{brewery.description}</p>
+                        </div>
+                        <h1 align="center"> Check-ins:</h1>
+                        <p align="center"> No Check-ins yet!</p>
+                    </div>
+                    </div>
             );
     }
 }

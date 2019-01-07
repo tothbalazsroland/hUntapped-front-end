@@ -1,5 +1,7 @@
 import React from "react";
 import fb from "./img/fb.png";
+import {Navbar} from "./Navbar";
+import {getUrl} from "./ApiUrl";
 
 export class Venue extends React.Component{
     constructor(props) {
@@ -13,7 +15,7 @@ export class Venue extends React.Component{
 
     componentDidMount(){
         this.setState( {isLoading: true});
-        const url = "http://192.168.162.37:8080/api/venue/"+this.state.venueId;
+        const url = getUrl()+"api/venue/id="+this.state.venueId;
         fetch(url)
             .then(response => response.json())
             .then(data => this.setState( {venue: data, isLoading:false}))
@@ -27,16 +29,20 @@ export class Venue extends React.Component{
         }
         else
             return (
+                <div>
+                    <Navbar/>
                     <div className="card">
                         <div className="card-body">
-                            <h5 className="card-title"><a href={"/venue/"+venue.id}>{venue.name}</a><a href={venue.facebookLink}> <img className="facebookImg" src={fb}/></a></h5>
+                            <h5 className="card-title"><a href={"/venue/"+venue.id}>{venue.name}</a><a href={venue.facebookLink}> <img alt="" className="facebookImg" src={fb}/></a></h5>
                             <p className="type">{venue.type}</p>
                             <p className="brewery-name"> {venue.country}, {venue.address}</p>
                             <p className="card-text">{venue.phoneNumber}</p>
                         </div>
-                    <h1 align="center"> Check-ins:</h1>
-                    <p align="center"> No Check-ins yet!</p>
+                        <h1 align="center"> Check-ins:</h1>
+                        <p align="center"> No Check-ins yet!</p>
                     </div>
+                </div>
+
             );
     }
 
