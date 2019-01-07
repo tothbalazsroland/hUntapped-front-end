@@ -13,7 +13,7 @@ export class BrewerySearch extends React.Component {
     };
 
     sendSearch(nameChunk) {
-        const url = getUrl+"api/brewery/search=" + nameChunk;
+        const url = getUrl()+"api/brewery/search=" + nameChunk;
         fetch(url)
             .then(response => response.json())
             .then(data => {
