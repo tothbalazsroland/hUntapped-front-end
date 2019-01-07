@@ -1,5 +1,6 @@
 import React from "react";
 import {Navbar} from "./Navbar";
+import {getUrl} from "./ApiUrl";
 
 export class Register extends React.Component{
     constructor(props) {
@@ -33,7 +34,7 @@ export class Register extends React.Component{
             body: JSON.stringify(user),
         };
 
-        const request = new Request('http://localhost:8080/api/user/register',options);
+        const request = new Request(getUrl()+'api/user/register',options);
         fetch(request)
             .then(response => response.json()
                 .then(data=>{
