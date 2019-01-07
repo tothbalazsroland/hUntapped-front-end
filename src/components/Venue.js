@@ -1,6 +1,7 @@
 import React from "react";
 import fb from "./img/fb.png";
 import {Navbar} from "./Navbar";
+import {getUrl} from "./ApiUrl";
 
 export class Venue extends React.Component{
     constructor(props) {
@@ -14,7 +15,7 @@ export class Venue extends React.Component{
 
     componentDidMount(){
         this.setState( {isLoading: true});
-        const url = "http://localhost:8080/api/venue/"+this.state.venueId;
+        const url = getUrl()+"api/venue/id="+this.state.venueId;
         fetch(url)
             .then(response => response.json())
             .then(data => this.setState( {venue: data, isLoading:false}))

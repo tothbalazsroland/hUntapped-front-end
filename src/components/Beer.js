@@ -1,5 +1,6 @@
 import React from "react";
 import {Navbar} from "./Navbar";
+import {getUrl} from "./ApiUrl";
 
 export class Beer extends React.Component{
     constructor(props) {
@@ -13,7 +14,7 @@ export class Beer extends React.Component{
 
     componentDidMount(){
         this.setState( {isLoading: true});
-        const url = "http://localhost:8080/api/beer/"+this.state.beerId;
+        const url = getUrl()+"api/beer/id="+this.state.beerId;
         fetch(url)
             .then(response => response.json())
             .then(data => this.setState( {beer: data, isLoading:false}))

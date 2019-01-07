@@ -1,5 +1,6 @@
 import React from "react"
 import fb from "./img/fb.png";
+import {getUrl} from "./ApiUrl";
 
 
 
@@ -15,7 +16,7 @@ export class VenueSearch extends React.Component {
     };
 
     sendSearch(nameChunk) {
-        const url = "http://192.168.162.37:8080/api/venue/search=" + nameChunk;
+        const url = getUrl()+"api/venue/search=" + nameChunk;
         fetch(url)
             .then(response => response.json())
             .then(data => {

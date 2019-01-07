@@ -1,6 +1,5 @@
 import React from "react"
-
-
+import {getUrl} from "./ApiUrl";
 
 
 export class BeerSearch extends React.Component {
@@ -15,7 +14,7 @@ export class BeerSearch extends React.Component {
 
     sendSearch(nameChunk) {
         // cc ip: 192.168.162.37
-        const url = "http://192.168.162.37:8080/api/beer/search=" + nameChunk;
+        const url = getUrl()+"api/beer/search=" + nameChunk;
         fetch(url)
             .then(response => response.json())
             .then(data => {

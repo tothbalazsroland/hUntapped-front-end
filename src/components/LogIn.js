@@ -2,6 +2,7 @@ import React from 'react';
 import * as jwt_decoder from "jwt-decode";
 import { Redirect } from 'react-router-dom'
 import {Navbar} from "./Navbar";
+import {getUrl} from "./ApiUrl";
 
 export class LogIn extends React.Component{
     constructor(props) {
@@ -37,7 +38,7 @@ export class LogIn extends React.Component{
             body: JSON.stringify(user),
         };
 
-        const request = new Request('http://localhost:8080/api/user/login',options);
+        const request = new Request(getUrl()+'api/user/login',options);
         fetch(request)
             .then(response => response.json()
                 .then(data => {
