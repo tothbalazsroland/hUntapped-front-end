@@ -53,6 +53,9 @@ export class Navbar extends React.Component{
                         <li className="nav-item">
                             <a className="nav-link" href="/venues">Venues</a>
                         </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/search">Search</a>
+                        </li>
                         <li className="nav-item" id="logOut">
                             <a className="nav-link" onClick={this.logOut}>Log out</a>
                         </li>
@@ -79,6 +82,9 @@ export class Navbar extends React.Component{
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" href="/venues">Venues</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="/search">Search</a>
                     </li>
                     <li className="nav-item registerNavLink">
                         <a className="nav-link" href="/register">Register</a>
