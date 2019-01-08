@@ -9,7 +9,7 @@ export class Home  extends React.Component{
             <div>
                 <Navbar/>
                 <div className="mainPage">
-                    <img src={main}/>
+                    <img alt="" src={main}/>
                 </div>
             </div>
 

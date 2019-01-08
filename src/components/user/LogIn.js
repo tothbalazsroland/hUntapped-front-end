@@ -1,8 +1,8 @@
 import React from 'react';
 import * as jwt_decoder from "jwt-decode";
 import { Redirect } from 'react-router-dom'
-import {Navbar} from "./Navbar";
-import {getUrl} from "./ApiUrl";
+import {Navbar} from "../Navbar";
+import {getUrl} from "../ApiUrl";
 
 export class LogIn extends React.Component{
     constructor(props) {
@@ -59,7 +59,7 @@ export class LogIn extends React.Component{
     }
 
     render(){
-        if (this.state.redirect == true) {
+        if (this.state.redirect === true) {
             return <Redirect to="/beers"/>
         }else
         return <div>
