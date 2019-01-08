@@ -1,6 +1,7 @@
 import React from "react";
 import {Navbar} from "../Navbar";
 import {getUrl} from "../ApiUrl";
+import {BeersByBreweryId} from "../beer/BeersByBreweryId";
 
 export class Brewery extends React.Component{
     constructor(props) {
@@ -43,8 +44,8 @@ export class Brewery extends React.Component{
                             </table>
                             <p className="description">{brewery.description}</p>
                         </div>
-                        <h1 align="center"> Check-ins:</h1>
-                        <p align="center"> No Check-ins yet!</p>
+                        <h1 align="center">Beers: </h1>
+                        <BeersByBreweryId breweryId={brewery.id}/>
                     </div>
                     </div>
             );
