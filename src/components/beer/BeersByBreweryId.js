@@ -1,14 +1,14 @@
 import React from "react";
-import {Navbar} from "./Navbar"
-import {getUrl} from "./ApiUrl";
+import {getUrl} from "../ApiUrl";
 
-export class Beers extends React.Component{
+export class BeersByBreweryId extends React.Component{
     constructor(props) {
         super(props);
 
         this.state = {
             beers: [],
-            isLoading: true
+            isLoading: true,
+            breweryId: props.breweryId
         }
     }
 
@@ -16,7 +16,7 @@ export class Beers extends React.Component{
     componentDidMount(){
         this.setState( {isLoading: true});
 
-        fetch(getUrl()+"api/beers")
+        fetch(getUrl()+"api/beers/brewery-id=" + this.state.breweryId)
             .then(response => response.json())
             .then(data => this.setState( {beers: data, isLoading:false}))
     }
@@ -29,14 +29,13 @@ export class Beers extends React.Component{
         }
         else
             return<div>
-                    <Navbar/>
                 <div className="container ">
                     <div className="main">
                         <div><h2 align="center">Beers</h2></div>
                         { beers.map((beer, key) => <div key={beer.id} className="card">
                             <div className="card-body">
                                 <h5 className="card-title"><a href={"/beer/"+beer.id}>{beer.name}</a></h5>
-                                <p className="brewery-name"> {beer.brewery}</p>
+                                <p className="brewery-name"> {beer.brewery.name}</p>
                                 <p className="beer-style"> {beer.type}</p>
                                 <p className="card-text">{beer.description}</p>
                                 <table className="table table-bordered">
@@ -53,7 +52,7 @@ export class Beers extends React.Component{
                         </div>)}
                     </div>
                 </div>
-                </div>
+            </div>
     }
 
 }

@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route} from "react-router-dom";
 
-import {User} from "./components/User.js";
+import {User} from "./components/user/User.js";
 import {Home} from "./components/Home.js";
-import {Beers} from "./components/Beers.js";
-import {Venues} from "./components/Venues.js";
-import {Breweries} from "./components/Breweries";
-import {Beer} from "./components/Beer";
-import {Brewery} from "./components/Brewery";
-import {Venue} from "./components/Venue";
+import {Beers} from "./components/beer/Beers.js";
+import {Venues} from "./components/venue/Venues.js";
+import {Breweries} from "./components/brewery/Breweries";
+import {Beer} from "./components/beer/Beer";
+import {Brewery} from "./components/brewery/Brewery";
+import {Venue} from "./components/venue/Venue";
 import {Search} from "./components/Search"
-import {Register} from "./components/Register";
+import {Register} from "./components/user/Register";
 
 /*import logo from './logo.svg';*/
-import './App.css';
-import {LogIn} from "./components/LogIn";
+import './style/App.css';
+import {LogIn} from "./components/user/LogIn";
 
 class App extends Component {
   render() {

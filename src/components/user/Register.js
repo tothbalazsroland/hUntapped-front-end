@@ -1,6 +1,6 @@
 import React from "react";
-import {Navbar} from "./Navbar";
-import {getUrl} from "./ApiUrl";
+import {Navbar} from "../Navbar";
+import {getUrl} from "../ApiUrl";
 
 export class Register extends React.Component{
     constructor(props) {

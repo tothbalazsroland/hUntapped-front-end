@@ -1,5 +1,5 @@
 import React from "react"
-import {getUrl} from "./ApiUrl";
+import {getUrl} from "../ApiUrl";
 
 
 export class BrewerySearch extends React.Component {

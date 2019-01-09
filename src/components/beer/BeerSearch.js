@@ -1,5 +1,5 @@
 import React from "react"
-import {getUrl} from "./ApiUrl";
+import {getUrl} from "../ApiUrl";
 
 
 export class BeerSearch extends React.Component {
@@ -50,7 +50,7 @@ export class BeerSearch extends React.Component {
                 {beers.map((beer, key) => <div key={beer.id} className="card">
                     <div className="card-body">
                         <h5 className="card-title"><a href={"/beer/" + beer.id}>{beer.name}</a></h5>
-                        <p className="brewery-name"> {beer.brewery}</p>
+                        <p className="brewery-name"> {beer.brewery.name}</p>
                         <p className="beer-style"> {beer.type}</p>
                         <p className="card-text">{beer.description}</p>
                         <table className="table table-bordered">
