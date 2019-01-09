@@ -23,6 +23,7 @@ export class LogIn extends React.Component{
     }
 
 
+
     logIn(){
 
         const user = {
@@ -51,7 +52,7 @@ export class LogIn extends React.Component{
                         this.setState({redirect: true});
 
                     }catch (e) {
-                        console.log("invalid username or password")
+                        alert("invalid username or password");
                     }
 
 
@@ -89,6 +90,25 @@ export class LogIn extends React.Component{
                     </div>
                     <div className="row justify-content-md-center">
                         <button type="button" className="btn btn-dark" onClick={()=> {this.logIn()}}>Log in</button>
+                    </div>
+                </div>
+            </div>
+            <div className="modal fade" id="invalidLoginModal" tabIndex="-1" role="dialog"
+                 aria-labelledby="invalidLoginModalLabel" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="invalidLoginModalLabel">Error!</h5>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div className="modal-body">
+                            Username or Password was incorrect!
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
