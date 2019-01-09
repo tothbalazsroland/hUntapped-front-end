@@ -15,8 +15,6 @@ import {Register} from "./components/user/Register";
 /*import logo from './logo.svg';*/
 import './style/App.css';
 import {LogIn} from "./components/user/LogIn";
-import './App.css';
-import {LogIn} from "./components/LogIn";
 import {Checkin} from "./components/Checkin";
 
 class App extends Component {
