@@ -1,8 +1,8 @@
 import React from "react";
 
-import {BeerSearch} from "./BeerSearch";
-import {BrewerySearch} from "./BrewerySearch";
-import {VenueSearch} from "./VenueSearch";
+import {BeerSearch} from "./beer/BeerSearch";
+import {BrewerySearch} from "./brewery/BrewerySearch";
+import {VenueSearch} from "./venue/VenueSearch";
 import {Navbar} from "./Navbar";
 
 export class Search extends React.Component {

@@ -1,6 +1,6 @@
 import React from "react";
-import {Navbar} from "./Navbar";
-import {getUrl} from "./ApiUrl";
+import {Navbar} from "../Navbar";
+import {getUrl} from "../ApiUrl";
 
 export class Register extends React.Component{
     constructor(props) {
@@ -39,8 +39,10 @@ export class Register extends React.Component{
             .then(response => response.json()
                 .then(data=>{
                     this.setState({isRegisterSuccesful:data});
-                    console.log(data);
-                }))
+                    if (!this.state.isRegisterSuccesful) {
+                        alert("Username or email already registered!");
+                    }
+                    }))
         ;
 
 

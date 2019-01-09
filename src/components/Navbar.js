@@ -1,5 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 
 
 export class Navbar extends React.Component{
@@ -27,10 +26,11 @@ export class Navbar extends React.Component{
     logOut(){
         sessionStorage.clear();
         this.setState({isUserLoggedIn: false})
+        window.location = "http://localhost:3000/";
     }
 
     render(){
-        if (this.state.isUserLoggedIn == true){
+        if (this.state.isUserLoggedIn === true){
             return <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a className="navbar-brand" href="/">hUntapped</a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -55,7 +55,7 @@ export class Navbar extends React.Component{
                             <a className="nav-link" href="/search">Search</a>
                         </li>
                         <li className="nav-item" id="logOut">
-                            <a className="nav-link" onClick={this.logOut}>Log out</a>
+                            <a href="http://localhost:3000/" className="nav-link" onClick={this.logOut}>Log out</a>
                         </li>
                     </ul>
                 </div>

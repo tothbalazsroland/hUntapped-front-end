@@ -1,6 +1,6 @@
 import React from "react"
-import fb from "./img/fb.png";
-import {getUrl} from "./ApiUrl";
+import fb from "../img/fb.png";
+import {getUrl} from "../ApiUrl";
 
 
 
