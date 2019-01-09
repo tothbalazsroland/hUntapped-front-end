@@ -49,6 +49,7 @@ export class Beers extends React.Component{
                                     </tr>
                                     </tbody>
                                 </table>
+                                <span><a href={"checkin/"+ beer.id} className="btn btn-primary">Check-in</a></span>
                             </div>
                         </div>)}
                     </div>

@@ -25,7 +25,7 @@ export class Register extends React.Component{
         const user = {username: this.state.username,
                         password: this.state.password,
                         email: this.state.email,
-                        name: this.state.name}
+                        name: this.state.name};
         const headers = new Headers();
         headers.append('Content-Type','application/json');
         const options ={
