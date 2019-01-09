@@ -17,10 +17,8 @@ export class Navbar extends React.Component{
     componentDidMount(){
         const token = sessionStorage.getItem("token");
         const username = sessionStorage.getItem("username");
-        console.log(token);
-        console.log(username);
         if (username===null){
-            console.log("NULL")
+            console.log("User not logged in");
         }else{
             this.setState({username:username, isUserLoggedIn: true})
         }
