@@ -96,3 +96,8 @@ img {
     background: #4CAF50;
     cursor: pointer;
 }
+
+.warn{
+    text-align: center;
+    color: red;
+}
