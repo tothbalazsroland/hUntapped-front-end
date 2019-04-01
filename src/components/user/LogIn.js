@@ -3,6 +3,7 @@ import * as jwt_decoder from "jwt-decode";
 import { Redirect } from 'react-router-dom'
 import {Navbar} from "../Navbar";
 import {getUrl} from "../ApiUrl";
+import {LogInFailed} from "./LogInFailed";
 
 export class LogIn extends React.Component{
     constructor(props) {
@@ -10,7 +11,8 @@ export class LogIn extends React.Component{
         this.state = {
             username: "",
             password:"",
-            redirect: false
+            redirect: false,
+            failed_login: false
         };
 
         this.logIn = this.logIn.bind(this);
@@ -52,7 +54,8 @@ export class LogIn extends React.Component{
                         this.setState({redirect: true});
 
                     }catch (e) {
-                        alert("invalid username or password");
+                        this.setState({failed_login: true})
+
                     }
 
 
@@ -67,6 +70,7 @@ export class LogIn extends React.Component{
             <Navbar/>
             <div className="card">
                 <div className="card-body">
+                    {this.state.failed_login? <LogInFailed/>:null}
                     <div className="row justify-content-md-center">
                         <div className="col-30%">
                             <label>Username: </label><br/>
@@ -90,25 +94,6 @@ export class LogIn extends React.Component{
                     </div>
                     <div className="row justify-content-md-center">
                         <button type="button" className="btn btn-dark" onClick={()=> {this.logIn()}}>Log in</button>
-                    </div>
-                </div>
-            </div>
-            <div className="modal fade" id="invalidLoginModal" tabIndex="-1" role="dialog"
-                 aria-labelledby="invalidLoginModalLabel" aria-hidden="true">
-                <div className="modal-dialog" role="document">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="invalidLoginModalLabel">Error!</h5>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div className="modal-body">
-                            Username or Password was incorrect!
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
                     </div>
                 </div>
             </div>
