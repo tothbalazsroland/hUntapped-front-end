@@ -15,7 +15,8 @@ export class Checkin extends React.Component{
             beerId: this.props.match.params.id,
             rating: 2.5,
             description:"",
-            checkinComplete: false
+            checkinComplete: false,
+            user: ""
         };
         this.onSliderChanged = this.onSliderChanged.bind(this);
         this.handleChange = this.handleChange.bind(this);
