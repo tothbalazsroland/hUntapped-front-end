@@ -4,10 +4,7 @@ import * as jwt_decoder from "jwt-decode";
 import ReactModal from 'react-modal';
 import {LogInFailed} from "./user/LogInFailed";
 import Modal from "react-bootstrap/Modal";
-
-
-
-
+import {Redirect} from "react-router-dom";
 
 
 
@@ -20,7 +17,8 @@ export class NavbarLogin extends React.Component{
             isLoggedIn:false,
             loginFailed:false,
             user:null,
-            showModal: false
+            showModal: false,
+            isLogout: false
         };
         this.logIn = this.logIn.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -73,6 +71,7 @@ export class NavbarLogin extends React.Component{
                         localStorage.setItem("token", data.response);
                         this.setState({user: user.sub});
                         this.setState({isLoggedIn: true})
+                        window.location.reload();
                     }catch (e) {
                         this.setState({loginFailed: true});
                         this.setState({showModal:true})
@@ -82,10 +81,14 @@ export class NavbarLogin extends React.Component{
 
     logout(){
         localStorage.clear();
-        this.setState({isLoggedIn:false, user:null,username:"",password:""})
+        this.setState({isLoggedIn:false, user:null,username:"",password:"",isLogout:true})
+        window.location.reload();
     }
 
     render() {
+        if (this.state.isLogout){
+            return <Redirect to="/"/>
+        }
         let smClose = () => this.setState({ showModal: false });
         if (this.state.isLoggedIn){
             return(
