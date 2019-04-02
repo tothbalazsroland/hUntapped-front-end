@@ -1,6 +1,15 @@
 import React from 'react';
 import {getUrl} from "./ApiUrl";
 import * as jwt_decoder from "jwt-decode";
+import ReactModal from 'react-modal';
+import {LogInFailed} from "./user/LogInFailed";
+import Modal from "react-bootstrap/Modal";
+
+
+
+
+
+
 
 export class NavbarLogin extends React.Component{
     constructor(props) {
@@ -10,11 +19,23 @@ export class NavbarLogin extends React.Component{
             password:"",
             isLoggedIn:false,
             loginFailed:false,
-            user:null
+            user:null,
+            showModal: false
         };
         this.logIn = this.logIn.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.logout = this.logout.bind(this);
+        this.logIn = this.logIn.bind(this);
+        this.handleOpenModal = this.handleOpenModal.bind(this);
+        this.handleCloseModal = this.handleCloseModal.bind(this);
+    }
+
+    handleOpenModal () {
+        this.setState({ showModal: true });
+    }
+
+    handleCloseModal () {
+        this.setState({ showModal: false });
     }
 
     componentDidMount(){
@@ -53,7 +74,8 @@ export class NavbarLogin extends React.Component{
                         this.setState({user: user.sub});
                         this.setState({isLoggedIn: true})
                     }catch (e) {
-                        this.setState({loginFailed: true})
+                        this.setState({loginFailed: true});
+                        this.setState({showModal:true})
                     }
                 }));
     }
@@ -64,6 +86,7 @@ export class NavbarLogin extends React.Component{
     }
 
     render() {
+        let smClose = () => this.setState({ showModal: false });
         if (this.state.isLoggedIn){
             return(
                 <div className="row brightColor ml-auto">
@@ -77,8 +100,28 @@ export class NavbarLogin extends React.Component{
                 <span className="padding2px">Username:  </span>
                 <input type="text" name="username" placeholder="username" onChange={this.handleChange}/>
                 <span className="padding2px">Password:  </span>
-                <input type="password" name="password" placeholder="password" onChange={this.handleChange}/>
-                <button type="button" className="btn btn-secondary btn-sm" onClick={()=> {this.logIn()}}>Log in</button>
+                <input type="password" name="password" placeholder="password" onChange={this.handleChange}
+                       onKeyPress={event => {
+                                        if (event.key === 'Enter') {
+                                            this.logIn();
+                                        }
+                }}/>
+                <button type="button" className="btn btn-secondary btn-sm" onClick={this.logIn}>Log in</button>
+                <Modal
+                    className="redColor"
+                    size="sm"
+                    show={this.state.showModal}
+                    onHide={smClose}
+                    aria-labelledby="example-modal-sizes-title-sm"
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title id="example-modal-sizes-title-sm">
+                            Error signing in!
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Invalid username and/or password!</Modal.Body>
+                </Modal>
+
             </div>
         );
     }
