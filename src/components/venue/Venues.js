@@ -26,7 +26,11 @@ export class Venues extends React.Component{
         const isLoading = this.state.isLoading;
         const venues = this.state.venues;
         if (isLoading){
-            return <h1 align="center">Loading....</h1>
+            return <div>
+                        <Navbar/>
+                        <h1 align="center">Loading....</h1>
+                    </div>
+
         }
         else
             return<div>
