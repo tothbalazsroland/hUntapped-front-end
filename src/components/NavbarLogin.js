@@ -81,13 +81,12 @@ export class NavbarLogin extends React.Component{
 
     logout(){
         localStorage.clear();
-        this.setState({isLoggedIn:false, user:null,username:"",password:"",isLogout:true})
-        window.location.reload();
+        this.setState({isLoggedIn:false, user:null,username:"",password:"",isLogout:true,})
     }
 
     render() {
         if (this.state.isLogout){
-            return <Redirect to="/"/>
+            return <Redirect to="/redirecter"/>
         }
         let smClose = () => this.setState({ showModal: false });
         if (this.state.isLoggedIn){
@@ -124,7 +123,6 @@ export class NavbarLogin extends React.Component{
                     </Modal.Header>
                     <Modal.Body>Invalid username and/or password!</Modal.Body>
                 </Modal>
-
             </div>
         );
     }

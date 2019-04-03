@@ -16,6 +16,7 @@ import {Register} from "./components/user/Register";
 import './style/App.css';
 import {LogIn} from "./components/user/LogIn";
 import {Checkin} from "./components/Checkin";
+import {Redirecter} from "./components/Redirecter";
 
 class App extends Component {
   render() {
@@ -34,6 +35,7 @@ class App extends Component {
                 <Route exact path="/search" component={Search}/>
                 <Route exact path="/register" component={Register}/>
                 <Route exact path="/checkin/:id" component={Checkin}/>
+                <Route exact path="/redirecter" component={Redirecter}/>
             </div>
         </Router>
     );
