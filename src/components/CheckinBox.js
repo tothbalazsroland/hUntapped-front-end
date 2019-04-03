@@ -23,6 +23,7 @@ export class CheckinBox extends React.Component {
                         <tbody>
                         <tr>
                             <td className="Rating">Rated: {this.state.checkin.rating}</td>
+                            <td className="Comment">{this.state.checkin.description}</td>
                             <td className="Date">{date}</td>
                         </tr>
                         </tbody>

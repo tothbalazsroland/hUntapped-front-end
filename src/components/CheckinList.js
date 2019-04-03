@@ -12,12 +12,10 @@ export class CheckinList extends React.Component {
             sectionType: props.sectionType,
             id: props.id,
             checkins: [],
-            checkinBoxes: [],
             offset: 0,
             limit: 10,
             hasMore: true
         };
-        this.checkinBoxConverter = this.checkinBoxConverter.bind(this);
         this.fetchMoreCheckin = this.fetchMoreCheckin.bind(this);
         this.dataHandler = this.dataHandler.bind(this);
     }
@@ -27,29 +25,16 @@ export class CheckinList extends React.Component {
         const url = getUrl()+"api/checkin/" + this.state.sectionType + "id=" + this.state.id + "/limit=" + this.state.limit + "/offset=" + this.state.offset;
         fetch(url)
             .then(response => response.json())
-            .then(data => {this.dataHandler(data)})
-            .then(this.checkinBoxConverter())
+            .then(data => {this.dataHandler(data)});
     }
 
     fetchMoreCheckin() {
         const url = getUrl()+"api/checkin/" + this.state.sectionType + "id=" + this.state.id + "/limit=" + this.state.limit + "/offset=" + this.state.offset;
         fetch(url)
             .then(response => response.json())
-            .then(data => {this.dataHandler(data)})
-            .then(this.checkinBoxConverter());
+            .then(data => {this.dataHandler(data)});
     }
 
-    checkinBoxConverter() {
-        const limit = this.state.limit;
-        const offset = this.state.offset;
-        const checkinLength = this.state.checkins.length;
-        for (let checkin in this.state.checkins) {
-            this.setState({chekinBoxes: this.state.checkinBoxes.concat([<CheckinBox checkin={checkin}/>])});
-        }
-        if (checkinLength > offset && checkinLength <= limit) {
-            this.setState({hasMore: false})
-        }
-    }
 
     dataHandler(data) {
         if (data.length === 0) {
@@ -78,8 +63,8 @@ export class CheckinList extends React.Component {
                         </p>
                     }
                 >
-                    {this.state.checkins.map(checkin =>
-                        <CheckinBox checkin={checkin}/>
+                    {this.state.checkins.map((checkin, index) =>
+                        <CheckinBox checkin={checkin} key={index}/>
                     )}
                 </InfiniteScroll>
             </div>;
