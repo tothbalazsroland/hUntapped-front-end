@@ -1,5 +1,6 @@
 import React from "react";
 import {getUrl} from "../ApiUrl";
+import {Navbar} from "../Navbar";
 
 export class BeersByBreweryId extends React.Component{
     constructor(props) {
@@ -25,7 +26,10 @@ export class BeersByBreweryId extends React.Component{
         const isLoading = this.state.isLoading;
         const beers = this.state.beers;
         if (isLoading){
-            return <h1 align="center">Loading....</h1>
+            return <div>
+                        <Navbar/>
+                        <h1 align="center">Loading....</h1>
+                    </div>
         }
         else
             return<div>

@@ -3,6 +3,7 @@ import {getUrl} from "./ApiUrl";
 import {Navbar} from "./Navbar";
 import * as jwt_decoder from "jwt-decode";
 import {Redirect} from "react-router-dom";
+import Modal from "react-bootstrap/Modal";
 
 
 export class Checkin extends React.Component{
@@ -16,7 +17,7 @@ export class Checkin extends React.Component{
             rating: 2.5,
             description:"",
             checkinComplete: false,
-            user: ""
+            showModal: false
         };
         this.onSliderChanged = this.onSliderChanged.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -24,7 +25,7 @@ export class Checkin extends React.Component{
     }
 
     componentDidMount(){
-        if (sessionStorage.getItem("token")!=null) {
+        if (localStorage.getItem("token")!=null) {
             this.setState({loggedIn:true})
         }else{ this.setState({loggedIn:false})}
         this.setState( {isLoading: true});
@@ -44,8 +45,8 @@ export class Checkin extends React.Component{
     }
 
     rateBeer(event){
-        if (sessionStorage.getItem("token")!=null){
-            const username = jwt_decoder(sessionStorage.getItem("token")).sub;
+        if (localStorage.getItem("token")!=null){
+            const username = jwt_decoder(localStorage.getItem("token")).sub;
             const json = {
                 "username":username,
                 "description": this.state.description,
@@ -57,7 +58,7 @@ export class Checkin extends React.Component{
 
             const headers = new Headers();
             headers.append('Content-Type','application/json');
-            headers.append('Authorization', 'Bearer ' + sessionStorage.getItem("token"));
+            headers.append('Authorization', 'Bearer ' + localStorage.getItem("token"));
             const options ={
                 method: 'POST',
                 headers,
@@ -69,14 +70,14 @@ export class Checkin extends React.Component{
                 .then(response => response.json()
                     .then(data=>{
                         if (data!=true){
-                            sessionStorage.clear();
+                            localStorage.clear();
                             this.setState({loggedIn:false})
                             console.log("Invalid token!")
                         }
                         this.setState({checkinComplete:data});
                     }));
         }else {
-            this.setState({loggedIn:false})
+            this.setState({loggedIn:false});
         }
 
     }
@@ -85,12 +86,8 @@ export class Checkin extends React.Component{
         const rating = this.state.rating;
         const beer = this.state.beer;
         const redirect = this.state.checkinComplete;
-        const loggedIn = this.state.loggedIn;
         if (redirect){
             return <Redirect to="/beers"/>
-        }
-        if (!loggedIn){
-            return <Redirect to="/login"/>
         }
         return (
             <div>

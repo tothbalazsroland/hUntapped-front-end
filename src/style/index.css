@@ -96,3 +96,25 @@ img {
     background: #4CAF50;
     cursor: pointer;
 }
+
+.warn{
+    text-align: center;
+    color: red;
+}
+
+.brightColor{
+    color: rgba(255,255,255,.5);
+}
+
+label{
+    display: contents;
+    margin-bottom: 0;
+}
+
+.padding2px{
+    padding: 2px;
+}
+
+.redColor{
+    color:red;
+}

@@ -25,7 +25,10 @@ export class Beer extends React.Component{
         const isLoading = this.state.isLoading;
         const beer = this.state.beer;
         if (isLoading){
-            return <h1 align="center">Loading...</h1>
+            return (<div>
+                    <Navbar/>
+                    <h1 align="center">Loading...</h1>
+                    </div>)
         }
         else
         return (<div>
