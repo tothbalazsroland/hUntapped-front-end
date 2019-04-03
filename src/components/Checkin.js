@@ -137,11 +137,20 @@ export class Checkin extends React.Component{
                         <br/>
                         <label>Venue(optional):</label>
                         <br/>
+                        <div className="dropdown">
                         <input type="text" value={this.state.venueString} onChange={this.handleVenueInput}/>
-                        {this.state.venues? this.state.venues.map( (venue,key) => <div onClick={this.handleSelectVenue}>{venue.name}</div>)
-                                        :
-                                        null
+                        {this.state.venues? <div className="dropdown-menu show" aria-labelledby="dropdownMenuButton"
+                                                 x-placement="bottom-start"
+                                                 >
+
+
+                                {this.state.venues? this.state.venues.map( (venue,key) => <a className="dropdown-item" href="#" onClick={this.handleSelectVenue}>{venue.name}</a>)
+                                :
+                                null
+                                }</div>
+                            :null
                         }
+                        </div>
                         <br/>
                         <a className="btn btn-secondary" onClick={this.rateBeer}>Rate</a>
                     </div>

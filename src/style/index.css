@@ -123,3 +123,7 @@ label{
     width: 30%;
     height: 100px;
 }
+
+.dropdown-menu{
+    position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);
+}
