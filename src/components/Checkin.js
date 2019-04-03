@@ -20,17 +20,23 @@ export class Checkin extends React.Component{
             checkinComplete: false,
             showModal: false,
             venueString:"",
-            venues:null
+            venues:null,
+            selectedVenueName:null
         };
         this.onSliderChanged = this.onSliderChanged.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.rateBeer = this.rateBeer.bind(this);
         this.handleVenueInput = this.handleVenueInput.bind(this);
         this.handleSelectVenue = this.handleSelectVenue.bind(this);
+        this.clearSelectedVenue = this.clearSelectedVenue.bind(this);
     }
 
+    clearSelectedVenue(){
+        this.setState({selectedVenueName:null,venueId:null});
+    }
     handleSelectVenue(event){
-        console.log(event.target.textContent);
+        this.setState({selectedVenueName:event.target.textContent,venueString:null,venues:null,venueId:event.target.id});
+        console.log(event.target.textContent + event.target.id);
     }
     componentDidMount(){
         if (localStorage.getItem("token")!=null) {
@@ -82,7 +88,7 @@ export class Checkin extends React.Component{
                 "description": this.state.description,
                 "rating": this.state.rating,
                 "beerId": this.state.beerId,
-                "venueId": ""
+                "venueId": this.state.venueId
             };
             console.log(json);
 
@@ -138,13 +144,21 @@ export class Checkin extends React.Component{
                         <label>Venue(optional):</label>
                         <br/>
                         <div className="dropdown">
-                        <input type="text" value={this.state.venueString} onChange={this.handleVenueInput}/>
+                            {this.state.selectedVenueName?
+                                <div>{this.state.selectedVenueName}
+                                    <button onClick={this.clearSelectedVenue} type="button" className="close" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button></div>
+                                :
+                                <input type="text" value={this.state.venueString} onChange={this.handleVenueInput}/>
+                            }
+
                         {this.state.venues? <div className="dropdown-menu show" aria-labelledby="dropdownMenuButton"
                                                  x-placement="bottom-start"
                                                  >
 
 
-                                {this.state.venues? this.state.venues.map( (venue,key) => <a className="dropdown-item" href="#" onClick={this.handleSelectVenue}>{venue.name}</a>)
+                                {this.state.venues? this.state.venues.map( (venue,key) => <a className="dropdown-item" href="#" id={venue.id} onClick={this.handleSelectVenue}>{venue.name}</a>)
                                 :
                                 null
                                 }</div>
