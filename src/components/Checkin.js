@@ -134,8 +134,7 @@ export class Checkin extends React.Component{
                         <label>Venue(optional):</label>
                         <br/>
                         <input type="text" value={this.state.venueString} onChange={this.handleVenueInput}/>
-                        {this.state.venues?
-                                        <VenueSearchResultForCheckin venues={this.state.venues}/>
+                        {this.state.venues? this.state.venues.map( (venue,key) => <div onClick={()=>console.log(venue.name)}>{venue.name}</div>)
                                         :
                                         null
                         }

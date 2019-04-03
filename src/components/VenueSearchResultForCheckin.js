@@ -4,7 +4,8 @@ export class VenueSearchResultForCheckin extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            venues: this.props.venues
+            venues: this.props.venues,
+            selectedVenue: null
         }
 
     }
@@ -14,8 +15,11 @@ export class VenueSearchResultForCheckin extends React.Component{
     }
 
     render() {
+        if(this.state.selectedVenue){
+            return <div>{this.state.selectedVenue}</div>
+        }
         var venues = this.state.venues;
-        return <div> {venues.map( (venue,key) => <div>{venue.name}</div>)} </div>;
+        return <div>{venues.map( (venue,key) => <div >{venue.name}</div>)} </div>;
     }
 
 }
