@@ -1,6 +1,7 @@
 import React from "react";
 import {Navbar} from "../Navbar";
 import {getUrl} from "../ApiUrl";
+import {CheckinList} from "../CheckinList"
 
 export class Beer extends React.Component{
     constructor(props) {
@@ -50,8 +51,7 @@ export class Beer extends React.Component{
                         </table>
                         <span><a href={"/checkin/"+ beer.id} className="btn btn-primary">Check-in</a></span>
                     </div>
-                    <h1 align="center"> Check-ins:</h1>
-                    <p align="center"> No Check-ins yet!</p>
+                    <CheckinList sectionType="beer" id={beer.id}/>
                 </div></div>
 
         );

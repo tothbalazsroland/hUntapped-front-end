@@ -2,6 +2,7 @@ import React from "react";
 import fb from "../img/fb.png";
 import {Navbar} from "../Navbar";
 import {getUrl} from "../ApiUrl";
+import {CheckinList} from "../CheckinList";
 
 export class Venue extends React.Component{
     constructor(props) {
@@ -42,7 +43,7 @@ export class Venue extends React.Component{
                             <p className="card-text">{venue.phoneNumber}</p>
                         </div>
                         <h1 align="center"> Check-ins:</h1>
-                        <p align="center"> No Check-ins yet!</p>
+                        <CheckinList sectionType="venue" id={this.state.venueId}/>
                     </div>
                 </div>
 
