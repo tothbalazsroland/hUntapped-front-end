@@ -65,7 +65,7 @@ img {
 
 .slider {
     -webkit-appearance: none;
-    width: 50%;
+    width: 30%;
     height: 15px;
     border-radius: 0px;
     background: #d3d3d3;
@@ -85,7 +85,7 @@ img {
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: #4CAF50;
+    background: #343A40;
     cursor: pointer;
 }
 
@@ -93,7 +93,7 @@ img {
     width: 25px;
     height: 25px;
     border-radius:50px;
-    background: #4CAF50;
+    background: #343A40;
     cursor: pointer;
 }
 
@@ -117,4 +117,9 @@ label{
 
 .redColor{
     color:red;
+}
+
+.checkinComment{
+    width: 30%;
+    height: 100px;
 }
