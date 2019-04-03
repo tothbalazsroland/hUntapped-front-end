@@ -18,7 +18,8 @@ export class NavbarLogin extends React.Component{
             loginFailed:false,
             user:null,
             showModal: false,
-            isLogout: false
+            isLogout: false,
+            url: ""
         };
         this.logIn = this.logIn.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -39,7 +40,7 @@ export class NavbarLogin extends React.Component{
     componentDidMount(){
         if (localStorage.getItem("token")) {
             let userToken = jwt_decoder(localStorage.getItem("token"));
-            this.setState({isLoggedIn:true, user:userToken.sub})
+            this.setState({isLoggedIn:true, user:userToken.sub, url:"http://localhost:3000/user/" + userToken.sub})
         }
     }
 
@@ -69,7 +70,7 @@ export class NavbarLogin extends React.Component{
                         const user = jwt_decoder(data.response);
                         console.log(user.sub);
                         localStorage.setItem("token", data.response);
-                        this.setState({user: user.sub});
+                        this.setState({user: user.sub, url: "http://localhost:3000/user/" + user.sub});
                         this.setState({isLoggedIn: true})
                         window.location.reload();
                     }catch (e) {
@@ -92,7 +93,7 @@ export class NavbarLogin extends React.Component{
         if (this.state.isLoggedIn){
             return(
                 <div className="row brightColor ml-auto">
-                    <span className="padding2px">Welcome {this.state.user}</span>
+                    <a href={this.state.url} className="padding2px">Welcome {this.state.user}</a>
                     <button type="button" className="btn btn-secondary btn-sm" onClick={this.logout}>Log out</button>
                 </div>
             );
