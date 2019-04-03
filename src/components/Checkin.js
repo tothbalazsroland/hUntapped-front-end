@@ -26,8 +26,12 @@ export class Checkin extends React.Component{
         this.handleChange = this.handleChange.bind(this);
         this.rateBeer = this.rateBeer.bind(this);
         this.handleVenueInput = this.handleVenueInput.bind(this);
+        this.handleSelectVenue = this.handleSelectVenue.bind(this);
     }
 
+    handleSelectVenue(event){
+        console.log(event.target.textContent);
+    }
     componentDidMount(){
         if (localStorage.getItem("token")!=null) {
             this.setState({loggedIn:true})
@@ -134,7 +138,7 @@ export class Checkin extends React.Component{
                         <label>Venue(optional):</label>
                         <br/>
                         <input type="text" value={this.state.venueString} onChange={this.handleVenueInput}/>
-                        {this.state.venues? this.state.venues.map( (venue,key) => <div onClick={()=>console.log(venue.name)}>{venue.name}</div>)
+                        {this.state.venues? this.state.venues.map( (venue,key) => <div onClick={this.handleSelectVenue}>{venue.name}</div>)
                                         :
                                         null
                         }
