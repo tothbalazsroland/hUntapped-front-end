@@ -1,4 +1,4 @@
-import React from "react";
+ import React from "react";
 
 import {BeerSearch} from "./beer/BeerSearch";
 import {BrewerySearch} from "./brewery/BrewerySearch";
@@ -72,7 +72,14 @@ export class Search extends React.Component {
                                 <div className="form-group mx-sm-3 mb-2">
                                     <label htmlFor="searchField" className="sr-only">Search</label>
                                     <input type="text" className="form-control" id="searchField"
-                                           value={this.state.searchTerm} onChange={this.setSearchTerm.bind(this)}/>
+                                           value={this.state.searchTerm} onChange={this.setSearchTerm.bind(this)}
+                                           onKeyPress={event => {
+                                               if (event.key === 'Enter') {
+                                                   this.collector();
+                                               }
+                                           }
+                                           }
+                                    />
                                 </div>
                                 <button type="submit" className="btn btn-dark mb-2" onClick={() => {this.collector()}}>Search</button>
                             </div>

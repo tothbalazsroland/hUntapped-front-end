@@ -57,7 +57,7 @@ export class VenueSearch extends React.Component {
                 </div>)}
             </div>
         } else {
-            return <h2>Couldn't find venue with {this.props.nameChunk}.</h2>;
+            return <h2>No results!</h2>;
         }
     }
 

@@ -62,7 +62,7 @@ export class BrewerySearch extends React.Component {
                     </div>)}
                 </div>
         } else {
-            return <h2>Couldn't find brewery with {this.props.nameChunk}.</h2>;
+            return <h2>No results!</h2>;
         }
     }
 
